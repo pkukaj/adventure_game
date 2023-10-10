@@ -14,18 +14,19 @@ def start_game():
 def room_one():
     print("\nDu är nu i rum ett.")
     items = ['nyckel', 'lampa']
-    
+
     for item in items:
         print(f"Det finns en {item} här.")
 
-    choice = input("\nVilket föremål vill du plocka upp? ")
-    
-    if choice.lower() in items:
-        room_two(choice)
-    else:
-        print("Det föremålet finns inte. Försök igen.")
-        room_one()
+    while True:  # Lägger till en while-loop här
+        choice = input("\nVilket föremål vill du plocka upp? ")
 
+        if choice.lower() in items:
+            room_two(choice)
+            break  # Avsluta while-loopen när användaren har valt ett giltigt föremål
+        else:
+            print("Det föremålet finns inte. Försök igen.")
+            
 # Funktion för det andra rummet
 def room_two(item):
     print(f"\nDu har nu {item} och är i rum två.")
